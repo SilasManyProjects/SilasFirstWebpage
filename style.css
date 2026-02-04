@@ -1,0 +1,189 @@
+/* --- GLOBAL DEFAULTS --- */
+body {
+    background: linear-gradient(-45deg, #000, #280044, #000, #000);
+    background-size: 400% 400%;
+    animation: 25s infinite animate-gradient;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row; /* Default: Side-by-side for PC */
+    align-items: stretch;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    color: #fff;
+}
+
+@keyframes animate-gradient {
+    0%, 100% { background-position: 0 50% }
+    50% { background-position: 100% 50% }
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0) }
+    to { transform: scale(1) }
+}
+
+/* --- SIDEBAR (About Me) --- */
+.sidebar {
+    width: 400px;
+    min-width: 300px;
+    background-color: rgb(0 0 0 / .6);
+    padding: 30px;
+    font-size: 20px;
+    border-right: 2px solid rgb(255 255 255 / .1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: 5px 0 15px rgb(0 0 0 / .5);
+    z-index: 10;
+}
+
+.sidebar h2, .sidebar h3 {
+    border-bottom: 2px solid rgb(255 255 255 / .2);
+    padding-bottom: 10px;
+    margin-bottom: 5px;
+}
+
+/* --- MAIN CONTENT (Gallery) --- */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+h1 {
+    background-color: #0b0018;
+    opacity: .9;
+    font-size: 80px; 
+    margin: 30px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgb(0 0 0 / .5);
+    text-align: center;
+}
+
+p {
+    background-color: #000;
+    background-blend-mode: overlay;
+    opacity: .65;
+    font-size: 24px;
+    text-align: center;
+    padding: 15px;
+    border-radius: 20px;
+    margin: 10px;
+}
+
+/* --- GALLERY GRID --- */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    background-color: rgb(255 255 255 / .05);
+    border-radius: 15px;
+}
+
+.gallery img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgb(0 0 0 / .3);
+    transition: transform .4s cubic-bezier(.175, .885, .32, 1.275);
+    cursor: pointer;
+}
+
+/* PC Only Hover Effects */
+@media (hover: hover) {
+    .gallery img:hover {
+        transform: scale(1.05) rotate(1deg);
+        box-shadow: 0 15px 30px rgb(0 0 0 / .6);
+        z-index: 10;
+    }
+}
+
+/* --- MODAL --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0 0 0 / .95);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    max-width: 90%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.1);
+}
+
+#modalDescription {
+    margin-top: 20px;
+    color: #fff;
+    font-size: 24px;
+    background: none;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #f1f1f1;
+    font-size: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/* --- MOBILE & TABLET (Pixel 8 / iPad) --- */
+@media screen and (max-width: 900px) {
+    body {
+        flex-direction: column; /* Stack vertically */
+    }
+
+    /* This moves the Gallery to the TOP (Order 1) 
+       and Sidebar to the BOTTOM (Order 2)
+    */
+    .main-content {
+        order: 1;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .sidebar {
+        order: 2;
+        width: 100%;
+        border-right: none;
+        border-top: 2px solid rgb(255 255 255 / .2); /* Border now on top */
+        box-sizing: border-box;
+    }
+
+    h1 {
+        font-size: 40px; 
+        margin: 10px 0;
+        width: 100%;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        padding: 10px;
+    }
+    
+    .gallery img:active {
+        transform: scale(0.95);
+    }
+}
