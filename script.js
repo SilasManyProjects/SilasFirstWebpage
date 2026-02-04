@@ -1,5 +1,9 @@
 const modal=document.getElementById("imageModal");const modalImage=document.getElementById("modalImage");const modalDescription=document.getElementById("modalDescription");const galleryImages=document.querySelectorAll(".gallery img");const closeBtn=document.querySelector(".close");galleryImages.forEach(img=>{img.onclick=function(){modal.style.display="flex";modalImage.src=this.src;modalDescription.innerHTML=this.title;modalImage.style.animation="zoomIn 0.3s ease";}});closeBtn.onclick=function(){closeModal();}
 modal.onclick=function(event){if(event.target===modal){closeModal();}}
 function closeModal(){modal.style.display="none";}
-function disableRightClick(){document.addEventListener("contextmenu",function(e){e.preventDefault();});}
+const canvas=document.getElementById('drawPad');const ctx=canvas.getContext('2d');const clearBtn=document.getElementById('clearBtn');ctx.lineWidth=3;ctx.lineCap='round';ctx.strokeStyle='#00ffcc';let isDrawing=false;function getPos(e){const rect=canvas.getBoundingClientRect();const clientX=e.touches?e.touches[0].clientX:e.clientX;const clientY=e.touches?e.touches[0].clientY:e.clientY;return{x:clientX-rect.left,y:clientY-rect.top};}
+function startDraw(e){isDrawing=true;const pos=getPos(e);ctx.beginPath();ctx.moveTo(pos.x,pos.y);e.preventDefault();}
+function draw(e){if(!isDrawing)return;const pos=getPos(e);ctx.lineTo(pos.x,pos.y);ctx.stroke();ctx.beginPath();ctx.moveTo(pos.x,pos.y);e.preventDefault();}
+function stopDraw(){isDrawing=false;ctx.beginPath();}
+canvas.addEventListener('mousedown',startDraw);canvas.addEventListener('mousemove',draw);canvas.addEventListener('mouseup',stopDraw);canvas.addEventListener('mouseleave',stopDraw);canvas.addEventListener('touchstart',startDraw);canvas.addEventListener('touchmove',draw);canvas.addEventListener('touchend',stopDraw);clearBtn.addEventListener('click',()=>{ctx.clearRect(0,0,canvas.width,canvas.height);});function disableRightClick(){document.addEventListener("contextmenu",function(e){e.preventDefault();});}
 disableRightClick();
