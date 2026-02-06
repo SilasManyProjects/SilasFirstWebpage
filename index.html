@@ -4,6 +4,7 @@
     <meta content="width=device-width,initial-scale=1" name=viewport>
     <title>Silas' Arts</title>
     <link href="style.css?v=7" rel=stylesheet>
+    <script src="script.js?v=7" defer></script>
     <div class=sidebar>
         <h3>Ambience</h3><button class=music-btn id=musicBtn>► Play Music</button><br>
         <h2>About Me:</h2>
@@ -49,31 +50,46 @@
             <h1>Silas' Arts</h1>
         </div>
         <p>Welcome to my art gallery. I hope you enjoy my work.
-        <div class=gallery><img alt="Smokey The Dog Portrait" title="Smokey The Dog (RIP)" loading=lazy
-                src=smokeydog.webp> <img alt=Smokycat title="Smoky the Cat (RIP)" loading=lazy src=Smokycat.webp> <img
-                alt="Luna The Dog" title="Luna The Dog (RIP)" loading=lazy src=LunaDog.webp> <img alt=Lucy
-                title="Lucy the Dog" loading=lazy src=Lucy.webp> <img alt="Lucy2" title="Lucy the Dog (Stylized)"
-                loading=lazy src=LucyStylized.webp> <img alt="Daisy" title="Daisy the Dog (RIP)" loading=lazy
-                src=Daisy.webp>
-            <img alt="Daisy2" title="Daisy the Dog (RIP)" loading=lazy src=daisy2.webp>
-            <img alt=3pet title="Three of a kind" loading=lazy src=3pet.webp>
-            <img alt="CocoLab" title="Coco the Labrador" loading=lazy src=CocoLab.webp>
-            <img alt="UnknownDog" title="Unknown Dog" loading=lazy src=UnknownDog.webp>
-            <img alt=3orb title=Refraction loading=lazy src=3orb.webp> <img alt=Spring title=Remember. loading=lazy
-                src=Spring.webp> <img alt=WonderingWhy title="Wondering Why" loading=lazy src=WonderingWhy.webp> <img
-                alt=Window title="Stuck Inside" loading=lazy src=Window.webp> <img alt=Stranded title="Stranded"
-                loading=lazy src=StrandedInIce.webp>
-            <img alt=DontLookBack title="Don't Look Back" loading=lazy src=DontLookBack.webp> <img alt=LightingStudy
-                title="Lighting Study" loading=lazy src=LightingStudy.webp>
-            <img alt=CannotUnsee title="What I Cannot Unsee" loading=lazy src=CannotUnsee.webp> <img alt=Greed
-                title=Greed loading=lazy src=Greed.webp> <img alt=LetTheWaterFall title="Let The Water Fall"
-                loading=lazy src=LetTheWaterFall.webp> <img alt=IDontUnderstand title="I Don't Understand" loading=lazy
-                src=IDontUnderstand.webp>
-            <img alt=LeopardSharkAnthro title="Grin of the Leopard Shark" loading=lazy src=LeopardShark.webp>
+        <div class=gallery>
+            <div class="art-wrapper"><img alt="Smokey The Dog Portrait" title="Smokey The Dog (RIP)" loading=lazy
+                    src=smokeydog.webp></div>
+            <div class="art-wrapper"><img alt=Smokycat title="Smoky the Cat (RIP)" loading=lazy src=Smokycat.webp></div>
+            <div class="art-wrapper"><img alt="Luna The Dog" title="Luna The Dog (RIP)" loading=lazy src=LunaDog.webp>
+            </div>
+            <div class="art-wrapper"><img alt=Lucy title="Lucy the Dog" loading=lazy src=Lucy.webp></div>
+            <div class="art-wrapper"><img alt="Lucy2" title="Lucy the Dog (Stylized)" loading=lazy
+                    src=LucyStylized.webp></div>
+            <div class="art-wrapper"><img alt="Daisy" title="Daisy the Dog (RIP)" loading=lazy src=Daisy.webp></div>
+            <div class="art-wrapper"><img alt="Daisy2" title="Daisy the Dog (RIP)" loading=lazy src=daisy2.webp></div>
+            <div class="art-wrapper"><img alt=3pet title="Three of a kind" loading=lazy src=3pet.webp></div>
+            <div class="art-wrapper"><img alt="CocoLab" title="Coco the Labrador" loading=lazy src=CocoLab.webp></div>
+            <div class="art-wrapper"><img alt="UnknownDog" title="Unknown Dog" loading=lazy src=UnknownDog.webp></div>
+            <div class="art-wrapper"><img alt=3orb title=Refraction loading=lazy src=3orb.webp></div>
+            <div class="art-wrapper"><img alt=Spring title=Remember. loading=lazy src=Spring.webp></div>
+            <div class="art-wrapper"><img alt=WonderingWhy title="Wondering Why" loading=lazy src=WonderingWhy.webp>
+            </div>
+            <div class="art-wrapper"><img alt=Window title="Stuck Inside" loading=lazy src=Window.webp></div>
+            <div class="art-wrapper"><img alt=Stranded title="Stranded" loading=lazy src=StrandedInIce.webp></div>
+            <div class="art-wrapper"><img alt=DontLookBack title="Don't Look Back" loading=lazy src=DontLookBack.webp>
+            </div>
+            <div class="art-wrapper"><img alt=LightingStudy title="Lighting Study" loading=lazy src=LightingStudy.webp>
+            </div>
+            <div class="art-wrapper"><img alt=CannotUnsee title="What I Cannot Unsee" loading=lazy src=CannotUnsee.webp>
+            </div>
+            <div class="art-wrapper"><img alt=Greed title=Greed loading=lazy src=Greed.webp></div>
+            <div class="art-wrapper"><img alt=LetTheWaterFall title="Let The Water Fall" loading=lazy
+                    src=LetTheWaterFall.webp></div>
+            <div class="art-wrapper"><img alt=IDontUnderstand title="I Don't Understand" loading=lazy
+                    src=IDontUnderstand.webp></div>
+            <div class="art-wrapper"><img alt=LeopardSharkAnthro title="Grin of the Leopard Shark" loading=lazy
+                    src=LeopardShark.webp></div>
         </div>
     </div>
-    <div class=modal id=imageModal><span class=close>×</span>
+    <div class=modal id=imageModal>
+        <span class=close>×</span>
+        <a class="prev">&#10094;</a>
         <div class=modal-wrapper><img alt="Modal Image" title="Modal Image" class=modal-content id=modalImage></div>
+        <a class="next">&#10095;</a>
         <p id=modalDescription>
     </div>
-    <script src="script.js?v=6"></script>
+    </div>

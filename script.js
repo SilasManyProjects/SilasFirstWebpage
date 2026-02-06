@@ -3,6 +3,9 @@ const modalImage = document.getElementById("modalImage");
 const modalDescription = document.getElementById("modalDescription");
 const closeBtn = document.querySelector(".close");
 const musicBtn = document.getElementById("musicBtn");
+const prevBtn = document.querySelector(".prev");
+const nextBtn = document.querySelector(".next");
+let currentIndex = 0;
 
 /* Music System (Playlist) */
 const playlist = ["music.mp3", "music2.mp3"];
@@ -84,18 +87,62 @@ modal.onclick = function (e) {
 document.addEventListener("contextmenu", (e) => e.preventDefault());
 
 const galleryImages = document.querySelectorAll(".gallery img");
-galleryImages.forEach(img => {
-    const wrapper = document.createElement("div");
-    wrapper.classList.add("art-wrapper");
-    img.parentNode.insertBefore(wrapper, img);
-    wrapper.appendChild(img);
+const galleryImagesArray = Array.from(galleryImages);
 
+galleryImages.forEach((img, index) => {
     img.onclick = function () {
-        modal.style.display = "flex";
-        modalImage.src = this.src;
-        modalDescription.innerHTML = this.title;
-        modalImage.style.animation = "zoomIn 0.3s ease";
+        currentIndex = index;
+        openModal();
     };
+});
+
+function openModal() {
+    modal.style.display = "flex";
+    updateModalImage();
+}
+
+function updateModalImage() {
+    // Loop navigation
+    if (currentIndex >= galleryImagesArray.length) {
+        currentIndex = 0;
+    } else if (currentIndex < 0) {
+        currentIndex = galleryImagesArray.length - 1;
+    }
+
+    const img = galleryImagesArray[currentIndex];
+    modalImage.src = img.src;
+    modalDescription.innerHTML = img.title;
+
+    // Reset animation
+    modalImage.style.animation = "none";
+    modalImage.offsetHeight; /* trigger reflow */
+    modalImage.style.animation = "zoomIn 0.3s ease";
+}
+
+// Navigation buttons
+prevBtn.onclick = function () {
+    currentIndex--;
+    updateModalImage();
+}
+
+nextBtn.onclick = function () {
+    currentIndex++;
+    updateModalImage();
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', function (e) {
+    if (modal.style.display === "flex") {
+        if (e.key === "ArrowLeft") {
+            currentIndex--;
+            updateModalImage();
+        } else if (e.key === "ArrowRight") {
+            currentIndex++;
+            updateModalImage();
+        } else if (e.key === "Escape") {
+            closeModal();
+        }
+    }
 });
 
 /* Weather */
