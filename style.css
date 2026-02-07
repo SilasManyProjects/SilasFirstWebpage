@@ -11,11 +11,13 @@ body {
     animation: 25s infinite animate-gradient;
     width: 100%;
     min-height: 100vh;
+    min-height: 100dvh;
     flex-direction: row;
     align-items: stretch;
     font-family: Arial, sans-serif;
     color: #fff;
     overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
 }
 
 @keyframes animate-gradient {
@@ -343,7 +345,7 @@ p {
     width: 100%;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1180px) {
     body {
         flex-direction: column;
     }
@@ -401,5 +403,15 @@ p {
 
     .gallery {
         grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+}
+
+@media (hover: none) {
+    .art-wrapper:hover img {
+        transform: none;
+    }
+
+    .music-btn:hover {
+        transform: none;
     }
 }
